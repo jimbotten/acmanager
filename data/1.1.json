@@ -1,0 +1,1 @@
+{"number":"1.1","title":"Create Employee","description":"This use-case covers employee creation","precondition":"The employee does not already exist","action":"The employee is created in a vault","result":"The employee is created downstream"}
