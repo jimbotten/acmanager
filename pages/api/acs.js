@@ -2,7 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const dataDirectory = path.join(process.cwd(), 'data');
+// const dataDirectory = path.join(process.cwd(), 'data');
+const dataDirectory = path(process.env.DATASOURCE);
 
 export default function handler(req, res) {
   // Get file names under /data
