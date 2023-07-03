@@ -1,32 +1,23 @@
 import { ListOfAC } from '../components/ListOfAC'
 import { AcceptanceCriteria } from '../components/AcceptanceCriteria'
-
-async function getData() {
-  const res = await fetch(process.env.URL +'/api/acs')
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
+import { useState } from 'react';
 
 export default async function Home() {
-  const ac = await getData()
+const [active, setActive] = useState('1.1.json')
+const value: string ='1.1.json';
 
   return (
     <div className='container px-4 width:95% m-2'>
     <main className="grid grid-cols-4 gap-4">
       <div>
-        <ListOfAC titles='1.1 Create Employee' />
+        <ListOfAC setActive={value => setActive(value)}/>
       </div>
-      <div className="col-span-3"> <h3>AC's</h3>
-        {ac.id}
-        {ac.data.title}
-        {ac.data.number}
+      <div className="col-span-3">
+        <AcceptanceCriteria active='1.1.json' />
       </div>
     </main>
     </div>
+    
   )
 }
 
