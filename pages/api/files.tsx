@@ -13,6 +13,6 @@ export default function handler(req: any, res: any) {
   // Get file names under /data
   const fileNames: string[] = fs.readdirSync(dataDirectory);
   res.status(200).json({ fileNames })
-  console.log('number of filesnames: ' + fileNames.length)
+  console.log('API: Number of filenames: ' + fileNames.length)
 }
 

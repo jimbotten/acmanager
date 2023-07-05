@@ -1,25 +1,23 @@
-import { Link } from 'react'
+// import Link from 'react';
+import { useEffect } from "react";
 
-export const  ListOfAC = async (active, onSelect) => {
+export const ListOfAC = async ({onClickHandler}) => {
     async function getFileData() {
-        const res = await fetch(process.env.URL +'/api/files')
+        const res = await fetch(process.env.URL +'api/files')
         if (!res.ok) {
           throw new Error('Failed to fetch list of files')
         }
         const jsonResponse = await res.json();
-        console.log('num of files ' + jsonResponse.fileNames.length)
+        console.log('ListOfAC Component: Number of files ' + jsonResponse.fileNames.length)
         return jsonResponse.fileNames
       }
-          
-    let files= await getFileData();
     
+      let files = await getFileData();
+
+
     return (
         <div className="ListOfAC">
-            <ul>
-                { files.map((files) => 
-                    <li><Link href='#' onClick={onSelect} > {files}</Link></li>   )
-                }
-            </ul>
+            Text here            
         </div>
     )
 }
