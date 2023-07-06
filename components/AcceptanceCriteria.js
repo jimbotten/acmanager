@@ -1,29 +1,42 @@
-export const AcceptanceCriteria = async ({active}) => {
-    async function getACData(active) {
-        const res = await fetch(process.env.URL +'api/ac/'+active)
-        if (!res.ok) {
-          throw new Error('Failed to fetch an AC')
-        }
-        const jR = await res.json();
-        const arr = JSON.parse(jR.content);
-        
-        return arr
-      }
-          
-    console.log('outputting number:' + props.active);
-    const AC=  await getACData(props.active);
-    console.log('outputting number:' + AC.number);
+'use client'
+import { useState, useEffect } from 'react';
 
-    return (
-        <div className="AcceptanceCriteria">
-            <h2>{AC.number} {AC.title}</h2>
-                {AC.description}
-                <h3>Precondition</h3> 
-                {AC.precondition}
-                <h3>Action</h3>
-                {AC.action}
-                <h3>Result</h3>
-                {AC.result}
-        </div>
-    )
+export default function AcceptanceCriteria() {
+  const [active, setActive] = useState('1.1.json');
+  const [acitem, setAcitem] = useState({});
+
+  useEffect(() => {
+    const fetchFile = async () => {
+      const res = await getACitemData(active);  
+      // console.log('fileList set')  
+      setAcitem(res);
+  };
+  fetchFile()
+    .catch(console.error);
+}, [])
+
+  return (
+      <div className="AcceptanceCriteria">
+          <h2>{acitem.number} {acitem.title}</h2>
+              {acitem.description}
+              <h3>Precondition</h3> 
+              {acitem.precondition}
+              <h3>Action</h3>
+              {acitem.action}
+              <h3>Result</h3>
+              {acitem.result}
+      </div>
+  )
+}
+
+async function getACitemData(filename) {
+  console.log('calling for  : ' + filename)
+  const res = await fetch(process.env.URL +'api/ac/'+filename)
+  if (!res.ok) {
+    throw new Error('Failed to fetch an acitem')
+  }
+  const jR = await res.json();
+  const arr = JSON.parse(jR.content);
+  
+  return arr
 }

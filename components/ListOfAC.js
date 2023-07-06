@@ -17,7 +17,6 @@ export const ListOfAC = () => {
       const fetchFiles = async () => {
         const res = await getFileData();  
         // console.log('fileList set')  
-        
         setFilelist(res);
     };
     fetchFiles()
