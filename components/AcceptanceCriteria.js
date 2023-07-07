@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react';
 
-export default function AcceptanceCriteria() {
-  const [active, setActive] = useState('1.1.json');
+export const AcceptanceCriteria = ({active}) => {
+  // const [active] = useState('1.1.json');
   const [acitem, setAcitem] = useState({});
 
   useEffect(() => {

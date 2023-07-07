@@ -1,6 +1,6 @@
 'use client'
 import { ListOfAC } from '../components/ListOfAC'
-// import AcceptanceCriteria from '../components/AcceptanceCriteria'
+import { AcceptanceCriteria } from '../components/AcceptanceCriteria'
 import { createContext, useState } from "react";
 
 export default function Home() {
@@ -14,9 +14,9 @@ export default function Home() {
           <main className="grid grid-cols-4 gap-4">
             <div>
                 <ListOfAC setActive={setActive}/>
-                outside: {active}
             </div>
             <div className="col-span-3">
+              <AcceptanceCriteria active={active}/>
             </div>
           </main>
       </div>
