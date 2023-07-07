@@ -1,18 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+// import ActiveProvider, { useActiveContext } from '../app/ActiveContext.js';
 
-export const ListOfAC = () => {
-  const [active, setActive] = useState();
+export const ListOfAC = ({ setActive }) => {
+  // const {active, setActive} = useState();
   const [filelist, setFilelist] = useState(['1','2']);
-  
-  const onClickHandler = (e) =>{
-    e.preventDefault();
-    //console.log('clicked ' + e.target.innerText + '   type: ' + e.type);
-    setActive(e.target.innerText);
-  }
-    
-  // console.log('Page Load')
 
+  const onClickHandler = (e) =>{ setActive(e.target.innerText);}
   useEffect(() => {
       const fetchFiles = async () => {
         const res = await getFileData();  
@@ -24,16 +18,17 @@ export const ListOfAC = () => {
   }, [])
 
     return (
-        <div className="ListAC">
+        // <ActiveProvider>
+          <div className="ListAC">
             {filelist.map((item, index) =>
-            <button className='button' key={index} onClick={onClickHandler}>{item}</button>
+              <button className='button' key={index} onClick={(e) => setActive({item})}>
+                {item}
+              </button>
             )}
-            <div>active</div>
-            {active}
         </div>
+        // </ActiveProvider>
     )
 }
-
 
 async function getFileData() {
         

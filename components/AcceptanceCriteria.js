@@ -14,6 +14,7 @@ export default function AcceptanceCriteria() {
   fetchFile()
     .catch(console.error);
 }, [])
+// [setData]
 
   return (
       <div className="AcceptanceCriteria">
