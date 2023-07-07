@@ -1,14 +1,12 @@
 'use client'
 import { ListOfAC } from '../components/ListOfAC'
-import AcceptanceCriteria from '../components/AcceptanceCriteria'
-import { createContext, useContext, useState, useEffect } from "react";
-
+// import AcceptanceCriteria from '../components/AcceptanceCriteria'
+import { createContext, useState } from "react";
 
 export default function Home() {
-  const ActiveContext = createContext({ active: "1.1.json",  setActive: () => {} });
-    // const [ active, setActive ] = useState('1.1.json');
-  const {active, setActive} = useContext(ActiveContext);
-
+  const ActiveContext = createContext();
+  const [ active, setActive ] = useState('1.1.json');
+  
   return (
     <>
      <ActiveContext.Provider value = {{active, setActive}}>

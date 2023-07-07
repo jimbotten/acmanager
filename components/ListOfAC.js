@@ -1,9 +1,7 @@
 'use client'
 import { useState, useEffect, useContext } from 'react';
-// import ActiveProvider, { useActiveContext } from '../app/ActiveContext.js';
 
 export const ListOfAC = ({ setActive }) => {
-  // const {active, setActive} = useState();
   const [filelist, setFilelist] = useState(['1','2']);
 
   const onClickHandler = (e) =>{ setActive(e.target.innerText);}
@@ -18,7 +16,6 @@ export const ListOfAC = ({ setActive }) => {
   }, [])
 
     return (
-        // <ActiveProvider>
           <div className="ListAC">
             {filelist.map((item, index) =>
               <button className='button' key={index} onClick={onClickHandler}>
@@ -26,7 +23,6 @@ export const ListOfAC = ({ setActive }) => {
               </button>
             )}
         </div>
-        // </ActiveProvider>
     )
 }
 
