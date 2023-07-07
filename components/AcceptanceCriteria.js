@@ -17,15 +17,28 @@ export const AcceptanceCriteria = ({active}) => {
 // [setData]
 
   return (
-      <div className="AcceptanceCriteria">
-          <h2>{acitem.number} {acitem.title}</h2>
-              {acitem.description}
-              <h3>Precondition</h3> 
-              {acitem.precondition}
-              <h3>Action</h3>
-              {acitem.action}
-              <h3>Result</h3>
-              {acitem.result}
+      <div>
+        <form method="POST" action="/api/saveAC">
+          <span className="flex flex-col">
+            <label for='title'>
+              <input type="text" id="number" value={acitem.number} className='width: 0' />
+              <input type="text" id="title" value={acitem.title}/>
+            </label></span>
+          <span className="flex flex-col">
+            <label for="description">Business Description
+              <input type="text" id="description" value={acitem.description}/>
+            </label>
+            <label for='precondition'>Precondition
+              <input type="text" id="description" value={acitem.precondition}/>
+            </label>
+            <label for='action' className='acHeader'>Action
+              <input type="text" id="description" value={acitem.action}/>
+            </label>
+            <label for='result' className='acHeader'>Result
+              <input type="text" id="description" value={acitem.result}/>
+            </label>
+          </span>
+        </form>
       </div>
   )
 }
