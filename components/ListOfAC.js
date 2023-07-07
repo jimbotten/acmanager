@@ -21,7 +21,7 @@ export const ListOfAC = ({ setActive }) => {
         // <ActiveProvider>
           <div className="ListAC">
             {filelist.map((item, index) =>
-              <button className='button' key={index} onClick={(e) => setActive({item})}>
+              <button className='button' key={index} onClick={onClickHandler}>
                 {item}
               </button>
             )}

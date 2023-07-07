@@ -1,15 +1,17 @@
 'use client'
 import { ListOfAC } from '../components/ListOfAC'
 import AcceptanceCriteria from '../components/AcceptanceCriteria'
-import ActiveProvider, { useActiveContext } from '../app/ActiveContext.js';
+import { createContext, useContext, useState, useEffect } from "react";
+
 
 export default function Home() {
-  // const [ activeAc, setActiveAc ] = useState('1.1.json');
-  const {active, setActive} = useActiveContext();
+  const ActiveContext = createContext({ active: "1.1.json",  setActive: () => {} });
+    // const [ active, setActive ] = useState('1.1.json');
+  const {active, setActive} = useContext(ActiveContext);
 
   return (
     <>
-     <ActiveProvider>
+     <ActiveContext.Provider value = {{active, setActive}}>
         <div className='container px-4 width:95% m-2'>
           <main className="grid grid-cols-4 gap-4">
             <div>
@@ -20,8 +22,7 @@ export default function Home() {
             </div>
           </main>
       </div>
-      </ActiveProvider>
+      </ActiveContext.Provider>
     </>
   )
 }
-
