@@ -12,10 +12,10 @@ export default function Home() {
      <ActiveContext.Provider value = {{active, setActive}}>
         <div className='container px-4 width:95% m-2'>
           <main className="grid grid-cols-4 gap-4">
-            <div className='border-2 border-green-300'>
+            <div className=''>
                 <ListOfAC setActive={setActive}/>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-3 ">
               <AcceptanceCriteria active={active}/>
             </div>
           </main>

@@ -14,32 +14,63 @@ export const AcceptanceCriteria = ({active}) => {
   fetchFile()
     .catch(console.error);
 }, [])
-// [setData]
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    number: e.target.number.value,
+    title: e.target.title.value,
+    description: e.target.description.value,
+    precondition: e.target.precondition.value,
+    action: e.target.action.value,
+    result: e.target.result.value
+  }
+  const JSONdata = JSON.stringify(data);
+  const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSONdata,
+  }
+  
+  const resp = await fetch('/api/saveac',options)
+  const result = await resp.json()
+  console.log('saved');
+}
 
   return (
-      <div className='p-5'>
-        <form method="POST" action="/api/saveAC">
-          <span className="flex flex-row">
-            <label >
-            <span>id</span>
-              <input type="text" id="number" value={acitem.number} className='width: 0' />
-              </label>
-            <label><span>Title</span>
-              <input type="text" id="title" value={acitem.title}/>
-            </label>
-          </span>
-          <span className="grid grid-cols-2">
-            <span>Business Description</span>
-            <textarea className='' id="description" value={acitem.description}/>
-            <span>Precondition</span>
-            <textarea id="description" value={acitem.precondition}/>
-            <span>Action</span>
-            <textarea id="description" value={acitem.action}/>
-            <span>Result</span>
-            <textarea id="description" value={acitem.result}/>
-          </span>
-        </form>
+    <form method="POST" onSubmit={handleSubmit}>
+      <div className='w-full h-full flex flex-auto flex-col'>
+        <div className="flex flex-row w-full items-center">
+          <label className=''>ID
+            <input className='w-16' type="text" name='number' defaultValue={acitem.number} />
+          </label>
+          <label className='w-full'>Title
+            <input className='w-full' type="text" name='title' defaultValue={acitem.title}/>
+          </label>
+        </div>
+        <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded"></hr>
+        <span className="flex flex-col w-full">
+          <label>Business Description
+          <textarea className='w-full' name="description" defaultValue={acitem.description}/>
+          </label>
+          <label>Precondition
+          <textarea className='w-full' name="precondition" defaultValue={acitem.precondition}/>
+          </label>
+          <label>Action
+          <textarea className='w-full' name="action" defaultValue={acitem.action}/>
+          </label>
+          <label>Result
+          <textarea className='w-full' name="result" defaultValue={acitem.result}/>
+          </label>
+        </span>
+        <span className='flex-row'>
+          <button className='self-start bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' 
+            type='reset'>Reset</button>
+          <button className='self-start bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+            type='submit'>Save</button>
+        </span>
       </div>
+    </form>
   )
 }
 

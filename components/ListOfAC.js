@@ -20,7 +20,7 @@ export const ListOfAC = ({ setActive }) => {
             <ul className="list-none list-outside divide-y-2 m-1">
             { filelist.map((item, index) =>
               <li  key={index} onClick={onClickHandler}>
-                <button className='rounded-r border-2 border-orange-400 m-2'>{item}</button>
+                <button className=' m-2'>{item}</button>
               </li>
             )}
           </ul>

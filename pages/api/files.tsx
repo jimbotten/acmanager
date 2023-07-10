@@ -7,7 +7,7 @@ declare var process : {
     }
   }
   // console.log('API: dataDirectory '+ process.env.DATASOURCE)
-const dataDirectory = path.basename(process.env.DATASOURCE);
+const dataDirectory = path.join(process.env.DATASOURCE);
 
 export default function handler(req: any, res: any) {
   const fileNames: string[] = fs.readdirSync(dataDirectory);
