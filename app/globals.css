@@ -18,3 +18,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }
+
+ol,
+ul {
+  list-style: disc;
+  list-style-postion: inside;
+}

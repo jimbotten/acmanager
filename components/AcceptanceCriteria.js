@@ -34,6 +34,9 @@ const handleSubmit = async (e) => {
   
   const resp = await fetch('/api/saveac',options)
   const result = await resp.json()
+  const res = await getACitemData(active);  
+  // console.log('fileList set')  
+  setAcitem(res);
   console.log('saved');
 }
 

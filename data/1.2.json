@@ -1,1 +1,1 @@
-{"number":"1.2","title":"Create Contactor ","description":"This use-case covers contractor creation","precondition":"The contractor does not already exist","action":"The contractor is created in a vault","result":"The contractor is created downstream"}
+{"number":"1.2","title":"Create Contactor ","description":"This use-case covers contractor creation.","precondition":"* The contractor *does* not already exist","action":"* The contractor is created in a vault\n* Also this Action","result":"- [ ] The contractor is created downstream\n- Other account here."}
